@@ -12,12 +12,12 @@ export function ContactSection() {
           If you&apos;re solving operational problems and believe software should simplify work rather than complicate it, I&apos;d be happy to continue the conversation.
         </h2>
 
-        <div className="pt-6 border-t border-zinc-800/80 grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono text-xs">
+        <div className="pt-6 border-t border-zinc-800/80 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-mono text-xs">
           <div>
             <div className="text-zinc-500 mb-1">Email</div>
             <a
               href="mailto:raghudasa00@gmail.com"
-              className="text-zinc-200 hover:text-white transition-colors underline underline-offset-4"
+              className="text-zinc-200 hover:text-white transition-colors underline underline-offset-4 break-all sm:break-normal"
             >
               raghudasa00@gmail.com
             </a>
@@ -29,7 +29,7 @@ export function ContactSection() {
               href="https://drive.google.com/file/d/13Gl9-0ylAe_27nytQY0e6o_hbcNdDgh8/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-200 hover:text-white transition-colors underline underline-offset-4"
+              className="text-zinc-200 hover:text-white transition-colors underline underline-offset-4 break-all sm:break-normal"
             >
               Google Drive PDF ↗
             </a>
@@ -41,7 +41,7 @@ export function ContactSection() {
               href="https://github.com/raghudasa0088"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-200 hover:text-white transition-colors underline underline-offset-4"
+              className="text-zinc-200 hover:text-white transition-colors underline underline-offset-4 break-all sm:break-normal"
             >
               github.com/raghudasa0088
             </a>
@@ -53,7 +53,7 @@ export function ContactSection() {
               href="https://www.linkedin.com/in/raghunandan-dasa"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-200 hover:text-white transition-colors underline underline-offset-4"
+              className="text-zinc-200 hover:text-white transition-colors underline underline-offset-4 break-all sm:break-normal"
             >
               linkedin.com/in/raghunandan-dasa
             </a>
