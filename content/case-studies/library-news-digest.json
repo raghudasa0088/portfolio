@@ -1,0 +1,108 @@
+{
+  "slug": "library-news-digest",
+  "title": "AI-Powered Library News Digest",
+  "subtitle": "Automated Multi-Stage News Filtering & Executive Briefing Pipeline",
+  "tagline": "An automated information pipeline designed to convert daily collections of news links into a personalized, trustworthy news briefing while preserving source authenticity.",
+  "featured": false,
+  "role": "AI & Automation Builder",
+  "institution": "Library Services Automation",
+  "overview": "The AI-Powered Library News Digest is an automated information pipeline designed to convert daily collections of news links into a personalized, trustworthy news briefing. Every day, the college library distributes an email containing 60–70 links to business, technology, and current affairs articles. Although the information is valuable, the sheer volume makes it impractical to read consistently. Rather than summarizing the email directly with an AI model, I designed a multi-stage workflow that prioritizes source authenticity, relevance, and automation. The system combines workflow automation, web scraping, large language models, and document generation into a fully automated daily news digest.",
+  "background": [
+    "The library email already solved one important problem: it curated reliable, trustworthy news sources.",
+    "The remaining challenge was information overload — reading dozens of articles every day was unrealistic.",
+    "Summarizing them manually defeated the purpose of receiving a curated digest.",
+    "The opportunity was not to find more information, but to make existing information easier to consume."
+  ],
+  "problemStatement": {
+    "lead": "Using a large language model alone to solve news summarization introduces critical reliability challenges:",
+    "bulletPoints": [
+      "When asked to search the internet, AI models may include unreliable sources or hallucinate facts",
+      "For a daily news briefing, source authenticity is just as important as summarization quality",
+      "Processing 70 raw web pages through an LLM in a single prompt consumes excessive tokens and reduces summary focus"
+    ],
+    "summary": "The objective became: Maintain the authenticity of curated library sources while automating article extraction, filtering, summarization, and presentation."
+  },
+  "operationalContext": {
+    "description": "Daily automated operation triggered by incoming library email dispatches containing 60–70 unformatted links:",
+    "constraints": [
+      "Must preserve source authenticity by processing ONLY links provided in official library emails",
+      "Must handle varied news site HTML structures during web scraping",
+      "Must minimize token usage and latency across multi-article LLM calls",
+      "Must publish formatted output directly into Google Docs for seamless access"
+    ]
+  },
+  "contribution": {
+    "lead": "I designed and implemented a complete workflow using n8n that automates the entire process from email arrival to report generation:",
+    "items": [
+      "Detects new library emails automatically via Gmail triggers",
+      "Extracts article URLs using custom Python parsing",
+      "Downloads webpage content via HTTP requests",
+      "Extracts article headlines and main body text cleanly",
+      "Scores relevance using an LLM on a 1–5 scale",
+      "Filters out lower-relevance articles automatically",
+      "Summarizes selected high-relevance articles",
+      "Publishes the final formatted digest into Google Docs"
+    ],
+    "summary": "The system operates completely without manual intervention once configured."
+  },
+  "solution": {
+    "description": "An important design decision shaped the entire project: Instead of allowing the language model to search the internet directly, the workflow only processes links already curated by the college library. This provides two major advantages: First, it preserves source authenticity. Second, it significantly reduces the likelihood of AI-generated misinformation. The language model is responsible for understanding information, not discovering it.",
+    "keyPoints": [
+      "Source Authenticity Preserved: LLM operates only on curated library URLs",
+      "Two-Stage LLM Pipeline: Invocation 1 scores relevance (1-5), Invocation 2 summarizes top articles",
+      "Decoupled Retrieval & Understanding: Web scraping separated from cognitive summarization",
+      "Automated Google Docs Publishing: Direct executive delivery without manual formatting"
+    ]
+  },
+  "workflow": {
+    "description": "The multi-stage pipeline strictly separates information retrieval from cognitive summarization:",
+    "steps": [
+      { "step": 1, "label": "Library Email Arrival", "detail": "Library dispatches daily email containing 60-70 raw article links." },
+      { "step": 2, "label": "Gmail Trigger (n8n)", "detail": "n8n workflow automatically catches the incoming library email." },
+      { "step": 3, "label": "Python URL Extraction", "detail": "Extract and sanitize all valid article links from email body." },
+      { "step": 4, "label": "HTTP Web Scraping", "detail": "Fetch HTML content for each URL asynchronously." },
+      { "step": 5, "label": "Headline & Content Parsing", "detail": "Extract clean headlines and article body text from DOM." },
+      { "step": 6, "label": "LLM Relevance Scoring (1–5)", "detail": "Stage 1 LLM evaluates relevance against reader profile." },
+      { "step": 7, "label": "Relevance Filtering", "detail": "Filter dataset to retain only top-scoring articles (score 4-5)." },
+      { "step": 8, "label": "LLM Summarization", "detail": "Stage 2 LLM generates concise executive summaries for selected articles." },
+      { "step": 9, "label": "Google Docs Publishing", "detail": "Format and publish executive briefing into Google Docs via API." }
+    ]
+  },
+  "engineeringDecisions": [
+    {
+      "title": "Workflow Orchestration via n8n",
+      "description": "n8n manages scheduling, triggers, and orchestration while Python performs specialized link parsing and content extraction tasks."
+    },
+    {
+      "title": "Strict Separation of Responsibilities",
+      "description": "Each stage performs one clearly defined operation: Extraction -> Scraping -> Filtering -> Summarization -> Publishing. This modular structure simplifies debugging and future updates."
+    },
+    {
+      "title": "Two-Stage LLM Pipeline",
+      "description": "The language model is intentionally invoked twice. The first invocation scores article relevance (low token cost). The second summarizes only the selected top articles. This dramatically reduces total token consumption while producing a more focused digest."
+    },
+    {
+      "title": "Curated Scope Constraint",
+      "description": "By restricting LLM processing strictly to pre-curated library URLs, the system eliminates web search hallucination risk."
+    }
+  ],
+  "technologies": [
+    { "category": "Orchestration", "items": ["n8n Workflow Automation"] },
+    { "category": "Language & Processing", "items": ["Python", "HTTP Requests", "Web Scraping"] },
+    { "category": "AI Models & APIs", "items": ["Large Language Models (LLMs)", "Gmail API", "Google Docs API"] }
+  ],
+  "outcome": [
+    "Transformed a collection of 60–70 daily news links into a concise, personalized digest containing only top-relevant articles.",
+    "Drastically reduced the time required to stay informed while maintaining absolute trust in source authenticity.",
+    "Operates seamlessly in production without requiring manual intervention."
+  ],
+  "lessonsLearned": {
+    "lead": "This project changed the way I think about AI systems:",
+    "insights": [
+      "Large language models are most effective when they operate within carefully designed workflows rather than acting as standalone solutions.",
+      "Reliable automation comes from combining trustworthy data sources with structured pipelines, not from relying entirely on AI."
+    ],
+    "corePrinciple": "Reliable automation comes from combining trustworthy data sources with structured pipelines, not from relying entirely on AI."
+  },
+  "summary": "The AI-Powered Library News Digest combines workflow automation, web scraping, and large language models into a modular pipeline that transforms curated news links into a personalized, trustworthy daily briefing while preserving source authenticity."
+}

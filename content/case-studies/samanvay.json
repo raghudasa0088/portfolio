@@ -1,0 +1,154 @@
+{
+  "slug": "samanvay",
+  "title": "Samanvay: Academic Timetable Operations Platform",
+  "subtitle": "Constraint-Aware Operational Layer for Timetable Management",
+  "tagline": "Internal operations platform developed for IIM Bodh Gaya to manage the complete lifecycle of academic timetables after schedule generation.",
+  "featured": true,
+  "role": "AI & Product Builder",
+  "institution": "IIM Bodh Gaya",
+  "productionUrl": "https://its.iimbg.ac.in/samanvay/",
+  "overview": "Samanvay is an internal operations platform developed for IIM Bodh Gaya to manage the complete lifecycle of academic timetables after schedule generation. The institution already possessed an automated timetable generation engine built using an optimization solver. While this eliminated the manual process of creating timetables from spreadsheets, it did not solve the day-to-day operational challenges that followed. Administrators still needed to manually modify schedules, update database records, manage faculty availability, assign replacement professors, and ensure that every change respected the constraints of the academic timetable. Samanvay was built to bridge this gap. Instead of replacing the scheduling engine, the platform provides a visual, constraint-aware interface that allows administrators to manage timetable operations safely, efficiently, and without interacting directly with the underlying database.",
+  "background": [
+    "Academic timetable generation is one of the most constrained operational problems within an educational institution.",
+    "Before automation, the Program Office relied on spreadsheets and reused previous years' timetables for continuing batches. While this approach was manageable, it was time-consuming, difficult to maintain, and increasingly inefficient as scheduling requirements became more complex.",
+    "A senior student later developed an automated timetable generation engine using an optimization solver. This significantly improved the generation process, but the generated timetable still required manual refinement.",
+    "Any modification after timetable generation required administrators to edit database records directly. The scheduling engine successfully generated timetables, but the operational workflow surrounding those timetables remained manual."
+  ],
+  "problemStatement": {
+    "lead": "Generating a timetable is only the beginning of the scheduling process. Throughout an academic term, administrators regularly need to perform routine operational changes:",
+    "bulletPoints": [
+      "Move lectures across time slots and dates",
+      "Swap lecture slots between different courses",
+      "Replace professors due to unforeseen unavailability",
+      "Insert additional remedial or guest sessions",
+      "Remove scheduled sessions cleanly",
+      "Manage faculty leave requests dynamically",
+      "Ensure classrooms remain available without overlaps",
+      "Prevent timetable clashes across multiple interconnected batches"
+    ],
+    "summary": "Without dedicated software, these operations required direct interaction with database files, making even routine scheduling changes unnecessarily complex. The objective of Samanvay was not to improve the scheduling algorithm itself, but to provide an operational layer that transformed database operations into an intuitive visual workflow."
+  },
+  "operationalContext": {
+    "description": "The platform was designed around the operational requirements of IIM Bodh Gaya. Key scheduling constraints included:",
+    "constraints": [
+      "Two MBA batches comprising approximately 500 students each",
+      "Three IPM batches comprising approximately 180 students each",
+      "Fixed classroom availability and physical room capacities",
+      "Strict faculty availability constraints and slot preferences",
+      "Complex course-professor mappings across multiple sections",
+      "Multiple academic terms running concurrently",
+      "Existing timetable generation handled through an optimization solver"
+    ]
+  },
+  "contribution": {
+    "lead": "My work focused on designing and implementing the operational layer that sits above the scheduling engine. Primary contributions included:",
+    "items": [
+      "Developing the timetable visualization interface",
+      "Implementing drag-and-drop rescheduling",
+      "Building real-time constraint validation",
+      "Designing the complete rescheduling workflow",
+      "Implementing professor leave management",
+      "Creating role-based access control (RBAC)",
+      "Supporting dynamic course–professor reassignment",
+      "Building client-side validation to minimize unnecessary server requests",
+      "Designing a confirmation workflow before committing database updates"
+    ],
+    "summary": "Rather than generating timetables, my work focused on making generated timetables practical to operate."
+  },
+  "solution": {
+    "description": "The platform replaces database-level timetable management with an interactive web interface. Administrators interact directly with timetable cells instead of database tables. Each lecture becomes an independent scheduling object that can be inspected, moved, swapped, updated, or deleted through the interface. Changes are evaluated continuously before they are committed, ensuring that administrators understand whether a scheduling decision is valid before updating production data.",
+    "keyPoints": [
+      "Direct manipulation of timetable cells instead of SQL database editing",
+      "Independent scheduling objects for each lecture",
+      "Continuous constraint evaluation before committing updates",
+      "Clear separation of experimentation from production deployment"
+    ]
+  },
+  "workflow": {
+    "description": "A typical scheduling operation follows a safe 9-step sequence that isolates experimentation from production data:",
+    "steps": [
+      { "step": 1, "label": "Load Timetable", "detail": "Fetch active schedule data for the selected academic batch and term." },
+      { "step": 2, "label": "Client Snapshot", "detail": "Create an in-memory client-side snapshot of the scheduling database." },
+      { "step": 3, "label": "Render Blocks", "detail": "Display lectures as interactive, draggable timetable blocks." },
+      { "step": 4, "label": "Evaluate Destinations", "detail": "Evaluate every potential destination slot locally in JavaScript." },
+      { "step": 5, "label": "Highlight Valid", "detail": "Highlight valid destination slots in green in real-time." },
+      { "step": 6, "label": "Highlight Invalid", "detail": "Highlight invalid destination slots in red with conflict reasons." },
+      { "step": 7, "label": "Batch Modifications", "detail": "Allow multiple scheduling modifications within the local session." },
+      { "step": 8, "label": "Review & Confirm", "detail": "Present a clear summary confirmation step detailing all planned changes." },
+      { "step": 9, "label": "Commit to Production", "detail": "Commit approved changes cleanly to the central database via FastAPI." }
+    ]
+  },
+  "userExperience": {
+    "lead": "The platform was designed around direct manipulation rather than traditional forms. Key capabilities include:",
+    "capabilities": [
+      "Drag-and-drop lecture movement",
+      "Real-time schedule validation",
+      "Visual conflict indication",
+      "Multi-level Undo functionality",
+      "Adding and deleting lectures safely",
+      "Swapping timetable entries between courses",
+      "Batch, Section, Professor, and Course filtering"
+    ]
+  },
+  "constraintValidation": {
+    "lead": "Constraint validation forms the core of the rescheduling experience. Whenever a lecture is moved, the system evaluates:",
+    "evaluations": [
+      "Professor availability",
+      "Existing teaching commitments",
+      "Timetable clashes across sections",
+      "Swap feasibility",
+      "Classroom availability",
+      "Course assignment compatibility"
+    ],
+    "details": "Validation occurs entirely within the browser using a locally loaded timetable snapshot. This avoids unnecessary API requests while allowing instant feedback during drag-and-drop interactions. Rather than displaying validation errors after a change has been made, the interface communicates feasibility before a decision is committed."
+  },
+  "additionalModules": [
+    {
+      "title": "Professor Leave Management",
+      "description": "Faculty members can submit leave requests before timetable generation. These requests become scheduling constraints, reducing downstream timetable conflicts."
+    },
+    {
+      "title": "Role-Based Access Control (RBAC)",
+      "description": "Different stakeholders require different operational capabilities. The platform provides role-based permissions for Program Office, Reschedulers, Faculty, and Students. Students can view timetables without authentication, faculty members view schedules and submit leave, and administrative users receive full rescheduling privileges."
+    },
+    {
+      "title": "Course-Professor Assignment",
+      "description": "Faculty assignments occasionally change during an academic term. The platform allows administrators to update course ownership directly through the interface while preserving historical timetable information through effective-date based updates."
+    }
+  ],
+  "engineeringDecisions": [
+    {
+      "title": "Client-Side Validation Engine",
+      "description": "Timetable validation occurs entirely within JavaScript using a client-side database snapshot. This dramatically reduces server communication while providing immediate visual interaction feedback during drag-and-drop actions."
+    },
+    {
+      "title": "Deferred Database Updates",
+      "description": "Scheduling changes remain local until administrators explicitly approve them. This allows multiple complex modifications to be reviewed in aggregate before production data is updated."
+    },
+    {
+      "title": "Modular AI-Assisted Architecture",
+      "description": "The project was developed using Gemini AI as an implementation assistant. As the application expanded, Gemini's context limitations became a practical engineering constraint. The codebase was reorganized into modular components that could be developed independently and later integrated, reinforcing the importance of modular architecture in AI-assisted development."
+    }
+  ],
+  "technologies": [
+    { "category": "Backend", "items": ["FastAPI", "Python"] },
+    { "category": "Frontend", "items": ["HTML", "CSS", "JavaScript"] },
+    { "category": "Database", "items": ["SQLite"] },
+    { "category": "Development Assistant", "items": ["Gemini AI"] },
+    { "category": "Deployment", "items": ["Production deployment at IIM Bodh Gaya"] }
+  ],
+  "outcome": [
+    "Samanvay is actively deployed and used for production timetable management by the Program Office at IIM Bodh Gaya.",
+    "Eliminated direct database editing for administrators, converting complex SQL changes into an intuitive visual drag-and-drop workflow.",
+    "Successfully manages timetable operations for 2 MBA batches (~1,000 students) and 3 IPM batches (~540 students) with role-based access for faculty and students."
+  ],
+  "lessonsLearned": {
+    "lead": "This project fundamentally changed how I think about software engineering. I began by viewing the scheduling engine as the difficult part of the system. Over time, I realized that the larger challenge was enabling people to interact with that system safely and efficiently.",
+    "insights": [
+      "Operational software succeeds not because it contains sophisticated algorithms, but because it reduces cognitive effort for the people who depend on it every day.",
+      "The value of software is measured not only by what it automates, but by how much simpler it makes everyday work."
+    ],
+    "corePrinciple": "The value of software is measured not only by what it automates, but by how much simpler it makes everyday work."
+  },
+  "summary": "Samanvay transforms timetable management from a database-driven administrative task into a visual, constraint-aware operational workflow. By combining real-time validation, role-based access, faculty leave management, and interactive rescheduling, the platform extends the value of an existing scheduling engine and enables academic administrators to manage complex timetable changes with significantly greater confidence and efficiency."
+}

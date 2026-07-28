@@ -1,0 +1,111 @@
+{
+  "slug": "faculty-feedback-automation",
+  "title": "Faculty Feedback Report Automation",
+  "subtitle": "Automated Confidential Feedback Analysis & PDF Report Generation Pipeline",
+  "tagline": "Internal workflow automation developed for the IT Committee at IIM Bodh Gaya to transform raw student feedback into structured, confidential faculty reports.",
+  "featured": false,
+  "role": "AI & Workflow Builder",
+  "institution": "IT Committee, IIM Bodh Gaya",
+  "overview": "Faculty Feedback Report Automation is an internal workflow automation developed for the IT Committee at IIM Bodh Gaya to transform raw student feedback into structured, confidential faculty reports. At the end of every semester, students complete detailed course evaluations covering multiple aspects of classroom teaching, resource utilization, and overall learning experience. The responses are collected through Google Forms and exported as spreadsheets. Although the data contained valuable insights, the raw spreadsheet was difficult to interpret and provided little actionable information to faculty members. Preparing meaningful reports required manually processing large datasets, calculating averages, creating visualizations, and compiling recommendations. The objective of this project was to automate that entire workflow into a Python-based reporting system that converts raw survey responses into concise, visual reports while preserving confidentiality and eliminating repetitive manual work.",
+  "background": [
+    "Every semester, students submit anonymous feedback for every course.",
+    "The evaluation consists of seven quantitative questions together with an open-ended recommendation section.",
+    "The responses are exported into spreadsheets containing hundreds of individual entries.",
+    "While these spreadsheets accurately capture student opinions, they are not suitable for direct consumption by faculty members.",
+    "The information exists, but the insight remains hidden."
+  ],
+  "problemStatement": {
+    "lead": "Raw survey data creates several operational challenges for academic administration:",
+    "bulletPoints": [
+      "Faculty members receive large spreadsheets that are difficult and time-consuming to interpret",
+      "Administrative staff spend unnecessary manual effort preparing individual course reports",
+      "Manual data manipulation increases the possibility of calculation inconsistencies",
+      "Opening and reviewing raw responses introduces confidentiality concerns for student identities"
+    ],
+    "summary": "The challenge was not collecting feedback. The challenge was transforming raw responses into something useful without compromising student confidentiality or consuming administrative hours."
+  },
+  "operationalContext": {
+    "description": "Designed for semester-end evaluation cycles across multiple courses and batches at IIM Bodh Gaya:",
+    "constraints": [
+      "Seven quantitative metrics per evaluation (teaching quality, course coverage, clarity, etc.)",
+      "Open-ended qualitative student recommendations requiring clean separation",
+      "Strict confidentiality requirements prohibiting manual exposure of individual response rows",
+      "Repeatability across future semesters without script modification"
+    ]
+  },
+  "contribution": {
+    "lead": "I designed and implemented an automated reporting workflow that transforms raw feedback spreadsheets into faculty-ready reports. The system:",
+    "items": [
+      "Reads exported feedback spreadsheets programmatically",
+      "Processes quantitative responses accurately",
+      "Calculates weighted averages for every evaluation question",
+      "Generates visual response distribution charts",
+      "Extracts open-ended qualitative recommendations",
+      "Produces structured PDF reports without manual intervention"
+    ],
+    "summary": "The automation removes repetitive administrative work while ensuring that faculty members receive consistent and easy-to-understand reports."
+  },
+  "solution": {
+    "description": "The system converts numerical survey responses into meaningful visual summaries. Each generated report contains overall weighted averages for every evaluation question, visual charts showing response distributions, student recommendations presented separately, and a clean report layout suitable for faculty review. Rather than asking faculty members to analyze raw spreadsheets, the automation presents information in a form that supports reflection and improvement.",
+    "keyPoints": [
+      "Confidentiality by Design: Administrator runs script without viewing individual rows",
+      "Automated weighted average calculations and rating aggregation",
+      "Visual trend charts alongside quantitative metrics",
+      "Separate qualitative recommendation sections"
+    ]
+  },
+  "workflow": {
+    "description": "The reporting pipeline automates the end-to-end transformation from survey output to PDF delivery:",
+    "steps": [
+      { "step": 1, "label": "Student Feedback", "detail": "Students complete anonymous evaluations on Google Forms." },
+      { "step": 2, "label": "Forms Export", "detail": "Responses are exported into raw Excel spreadsheets." },
+      { "step": 3, "label": "Python Processing", "detail": "Script ingests spreadsheet without exposing raw rows." },
+      { "step": 4, "label": "Weighted Averages", "detail": "Compute weighted numerical scores across 7 evaluation dimensions." },
+      { "step": 5, "label": "Distribution Analysis", "detail": "Analyze score frequencies and rating distributions." },
+      { "step": 6, "label": "Chart Generation", "detail": "Programmatically generate clean distribution charts." },
+      { "step": 7, "label": "Recommendation Extraction", "detail": "Compile open-ended qualitative student feedback." },
+      { "step": 8, "label": "PDF Report Assembly", "detail": "Generate executive faculty-ready confidential PDF reports." }
+    ]
+  },
+  "engineeringDecisions": [
+    {
+      "title": "Automated Data Processing",
+      "description": "Instead of manually filtering spreadsheet rows in Excel, the entire dataset is processed programmatically to eliminate human error."
+    },
+    {
+      "title": "Visual Communication First",
+      "description": "Charts were generated programmatically because performance trends and rating distributions are far easier to interpret at a glance than dense numerical tables alone."
+    },
+    {
+      "title": "Structured Separation of Qualitative Feedback",
+      "description": "Open-ended recommendations were isolated from quantitative analysis, allowing faculty members to distinguish measurable feedback metrics from qualitative suggestions."
+    },
+    {
+      "title": "Confidentiality by Design",
+      "description": "The administrator running the script does not need to inspect or edit individual student response rows. The script outputs completed reports directly, preventing accidental exposure of confidential student feedback."
+    },
+    {
+      "title": "Pipeline Repeatability",
+      "description": "The workflow was designed so that the exact same script can process future semesters seamlessly without code modification."
+    }
+  ],
+  "technologies": [
+    { "category": "Core Language", "items": ["Python"] },
+    { "category": "Data Processing", "items": ["Pandas", "Excel Processing"] },
+    { "category": "Visualization & Reporting", "items": ["Matplotlib / Chart Generation", "PDF Generation"] }
+  ],
+  "outcome": [
+    "Transformed a repetitive administrative task into a single-click repeatable reporting workflow.",
+    "Substantially reduced administrative time required per semester evaluation cycle.",
+    "Faculty members received structured, actionable reports that preserved student confidentiality."
+  ],
+  "lessonsLearned": {
+    "lead": "This project reinforced an important principle:",
+    "insights": [
+      "Automation is not only about saving time; it is also about presenting information in a way that supports better decisions.",
+      "Transforming raw data into meaningful insight can be just as valuable as collecting the data itself."
+    ],
+    "corePrinciple": "Automation is not only about saving time; it is also about presenting information in a way that supports better decisions."
+  },
+  "summary": "Faculty Feedback Report Automation transforms raw semester-end survey data into structured, confidential reports through automated analysis, visualization, and report generation, enabling faculty members to understand student feedback without navigating complex spreadsheets."
+}

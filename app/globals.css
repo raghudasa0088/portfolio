@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+  
+  body {
+    background-color: #09090b;
+    color: #f4f4f5;
+    font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  }
+
+  ::selection {
+    background-color: #27272a;
+    color: #ffffff;
+  }
+}
