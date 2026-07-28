@@ -3,11 +3,11 @@ import React from 'react';
 export function Footer() {
   return (
     <footer className="border-t border-zinc-900 bg-zinc-950/80 py-12 px-6 text-xs text-zinc-500 font-mono">
-      <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
         <div>
           <span className="text-zinc-300 font-medium">Raghunandan Dasa</span> | AI-Powered Product & Operational Builder
         </div>
-        <div className="flex items-center gap-6">
+        <div className="flex flex-wrap items-center justify-center sm:justify-end gap-4 sm:gap-6">
           <a
             href="https://drive.google.com/file/d/13Gl9-0ylAe_27nytQY0e6o_hbcNdDgh8/view?usp=sharing"
             target="_blank"
