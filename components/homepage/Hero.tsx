@@ -18,8 +18,14 @@ export function Hero() {
 
         <div className="pt-4 flex flex-wrap items-center gap-4 text-sm">
           <a
-            href="#featured-work"
+            href="#working-with-me"
             className="px-6 py-3 bg-zinc-100 text-zinc-950 font-medium rounded-md hover:bg-white transition-colors duration-200 shadow-sm"
+          >
+            Working With Me ↓
+          </a>
+          <a
+            href="#featured-work"
+            className="px-6 py-3 bg-zinc-900 border border-zinc-800 text-zinc-300 font-medium rounded-md hover:bg-zinc-800 hover:text-white transition-colors duration-200"
           >
             Explore Case Studies
           </a>
