@@ -1,4 +1,5 @@
 import { Hero } from '@/components/homepage/Hero';
+import { WorkingWithMe } from '@/components/homepage/WorkingWithMe';
 import { FeaturedProject } from '@/components/homepage/FeaturedProject';
 import { AdditionalProjects } from '@/components/homepage/AdditionalProjects';
 import { ApproachSection } from '@/components/homepage/ApproachSection';
@@ -13,25 +14,28 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
-      {/* Section 1 — Hero */}
+      {/* Hero Section */}
       <Hero />
 
-      {/* Section 2 — Featured Case Study */}
+      {/* Fix 1: Working With Me / Offer Framing Section */}
+      <WorkingWithMe />
+
+      {/* Featured Case Study: Samanvay */}
       <FeaturedProject caseStudy={featuredCaseStudy} />
 
-      {/* Section 3 — Additional Case Studies */}
+      {/* Additional Case Studies */}
       <AdditionalProjects caseStudies={additionalCaseStudies} />
 
-      {/* Section 4 — Approach */}
+      {/* Approach */}
       <ApproachSection />
 
-      {/* Section 5 — Current Work */}
+      {/* Fix 2: InsightPrep Corrected B2B Analytics Copy */}
       <CurrentWorkSection />
 
-      {/* Section 6 — About */}
+      {/* About */}
       <AboutSection />
 
-      {/* Section 7 — Contact */}
+      {/* Contact */}
       <ContactSection />
     </div>
   );
