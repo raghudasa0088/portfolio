@@ -26,7 +26,7 @@ export function ContactSection() {
           <div>
             <div className="text-zinc-500 mb-1">Resume</div>
             <a
-              href="https://drive.google.com/file/d/13Gl9-0ylAe_27nytQY0e6o_hbcNdDgh8/view?usp=sharing"
+              href="https://drive.google.com/file/d/1YFij0rxbQHm-G2rr4jBbIjNprOnJuorY/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-200 hover:text-white transition-colors underline underline-offset-4 break-all sm:break-normal"
