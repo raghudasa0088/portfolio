@@ -30,7 +30,7 @@ export function Hero() {
             Explore Case Studies
           </a>
           <a
-            href="https://drive.google.com/file/d/13Gl9-0ylAe_27nytQY0e6o_hbcNdDgh8/view?usp=sharing"
+            href="https://drive.google.com/file/d/1YFij0rxbQHm-G2rr4jBbIjNprOnJuorY/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-3 bg-zinc-900 border border-zinc-800 text-zinc-300 font-medium rounded-md hover:bg-zinc-800 hover:text-white transition-colors duration-200"
