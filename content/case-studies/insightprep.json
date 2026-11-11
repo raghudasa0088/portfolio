@@ -1,0 +1,160 @@
+{
+  "slug": "insightprep",
+  "title": "InsightPrep: Institutional Student Intelligence Platform",
+  "subtitle": "Full-Stack Assessment & Cognitive Performance Monitoring for Coaching Institutions",
+  "tagline": "InsightPrep is the intelligence layer that coaching institutions deploy to monitor, diagnose, and act on student performance data at scale — moving beyond test scores to continuous cognitive profiling across every student, subject, and batch.",
+  "featured": false,
+  "role": "Product Designer & Full-Stack Builder",
+  "institution": "Independent — Active Product Development",
+  "overview": "InsightPrep is a full-stack institutional platform that coaching institutes deploy to monitor student cognitive performance across every test, topic, and batch. Where most assessment tools stop at scores and percentages, InsightPrep operates as a persistent intelligence layer — continuously profiling how each student performs against time benchmarks, classifying knowledge gaps by their root cause, and surfacing batch-wide misconceptions that individual scores never reveal. The platform serves three institutional roles simultaneously: a live test delivery engine for students, a diagnostic reporting system for teachers, and an administrative console for institution management. InsightPrep is built for institutions that want to know not just which students are underperforming, but why — and what to do about it.",
+  "background": [
+    "Coaching institutions that prepare students for JEE and NEET run hundreds of assessments per academic cycle, but their data infrastructure rarely matches the ambition of their teaching programs.",
+    "Most institutes operate with a fundamental visibility gap: they know a student scored 54%, but have no structured way to determine whether that score reflects a conceptual gap, a time management problem, or habitual guessing under pressure.",
+    "Existing test platforms — even the sophisticated ones — are delivery tools. They manage question banks and collect submissions. The diagnostic work that follows still happens manually: teachers reviewing spreadsheets, whiteboards during class debriefs, and subjective intuition about which chapters need re-teaching.",
+    "At the institutional level, this creates a second-order problem. Academic directors have no reliable mechanism to monitor batch-wide cognitive trends, compare cohort performance across test cycles, or identify the specific misconceptions that are costing students marks at scale.",
+    "InsightPrep was built to close this gap — giving institutions a persistent, structured intelligence layer that runs continuously across every test cycle, not just when someone has the time to analyze a spreadsheet."
+  ],
+  "problemStatement": {
+    "lead": "The institutional visibility gap in competitive exam preparation operates at three levels. Coaching institutes face interconnected challenges that no single tool currently addresses end-to-end:",
+    "bulletPoints": [
+      "Student-level: Scores reveal performance but not root cause — a 40% score looks identical whether the student has a conceptual gap, a speed problem, or a guessing habit",
+      "Teacher-level: Post-test analysis is manual, time-consuming, and subjective — instructors cannot systematically identify which misconceptions are most widespread across a batch",
+      "Institution-level: Academic directors have no structured view of cohort-wide cognitive trends, cross-batch comparisons, or whether interventions are improving outcomes over time",
+      "Operational: Question banks live in physical papers and PDFs with no digital infrastructure; every test cycle requires hours of manual data entry before analysis can begin",
+      "Diagnostic gap: Common misconception distractors — the specific wrong options students consistently choose — are never identified, so the same conceptual errors repeat across batches"
+    ],
+    "summary": "The challenge was not building a better quiz platform. The challenge was building an intelligence infrastructure that institutions could deploy once and benefit from continuously — across every student, every test, and every academic cycle."
+  },
+  "operationalContext": {
+    "description": "InsightPrep is designed around the operational realities of JEE/NEET coaching institutes:",
+    "constraints": [
+      "JEE and NEET use specific marking schemes — negative marking for incorrect answers, subject-wise cutoffs — that standard test tools handle poorly",
+      "Coaching institutes operate multiple batches simultaneously with different syllabi and test schedules",
+      "Teachers author 20-50 questions per test from physical papers and past exams, requiring efficient digitization",
+      "Students practice across subjects with varying question difficulties requiring intelligent time benchmarking per question",
+      "Administrative staff need roster management, role permissions, and CSV exports for institutional records",
+      "The platform must support KaTeX mathematical notation for physics, chemistry, and mathematics questions"
+    ]
+  },
+  "contribution": {
+    "lead": "I designed and built InsightPrep end-to-end as an independent product. Core contributions include:",
+    "items": [
+      "Designed the full relational database schema across profiles, tests, questions, options, attempts, and responses",
+      "Built the AI-powered question extraction pipeline using Google Gemini multimodal vision to digitize paper scans into KaTeX-ready questions",
+      "Implemented the per-question time telemetry system recording seconds spent on each individual question during live tests",
+      "Developed the cognitive diagnostic matrix classifying every topic into Mastered, Strong But Slow, Careless/Guessing, and Critical Weakness",
+      "Built the Killer Questions detection engine identifying common misconception distractors across a batch",
+      "Designed the student Personal Mock Engine supporting three test generation modes (random, manual, AI upload)",
+      "Implemented Role-Based Access Control across Student, Teacher, and Admin roles with account lifecycle management",
+      "Built cohort analytics dashboards with interactive scatter plots and batch score distribution histograms"
+    ],
+    "summary": "InsightPrep is a ground-up product design and engineering effort — from database schema and authentication to AI pipelines and analytics dashboards."
+  },
+  "solution": {
+    "description": "InsightPrep operates as a persistent institutional intelligence layer deployed across the full test cycle. When an institution runs a test, the platform simultaneously functions as the exam delivery engine for students, the diagnostic reporting system for teachers, and the administrative oversight console for academic directors. The core intelligence mechanism is a cognitive classification engine that processes every student's time and accuracy data at the topic level, outputting a structured diagnosis rather than a raw score. At the institutional level, this same data aggregates into cohort views that show which chapters the entire batch is struggling with, which teaching interventions are working, and which misconceptions are costing the most marks across the student population.",
+    "keyPoints": [
+      "Institutional Intelligence Layer: Persistent monitoring across every test, topic, and batch — not a one-time report",
+      "Cognitive Classification Engine: 4-category behavioral profiling (Mastered, Strong But Slow, Careless/Guessing, Critical Weakness) per student per topic",
+      "Killer Questions & Misconception Mapping: Identifies the specific wrong distractors chosen by majority of failing students across the institution",
+      "AI Question Digitization: Gemini Vision extracts KaTeX-ready questions from past paper scans, eliminating manual data entry across test cycles",
+      "Cohort Oversight Dashboard: Academic directors access batch-wide accuracy trends, score distributions, and cross-test performance comparisons"
+    ]
+  },
+  "workflow": {
+    "description": "The teacher and student workflows are designed for speed and insight at every step:",
+    "steps": [
+      { "step": 1, "label": "Question Bank Build", "detail": "Teachers author questions manually with KaTeX math support, or upload past paper PDFs/images for AI extraction." },
+      { "step": 2, "label": "AI Extraction Review", "detail": "Gemini Vision processes uploaded papers, returning structured questions with options, correct answers, difficulty, and inferred ideal solving times." },
+      { "step": 3, "label": "Test Publishing", "detail": "Teachers assemble tests from the question bank, set duration, and publish to student batches or as personal practice." },
+      { "step": 4, "label": "Live Exam Interface", "detail": "Students take timed tests with a question palette, review-later flags, and invisible per-question time telemetry running in the background." },
+      { "step": 5, "label": "Diagnostic Computation", "detail": "On submission, the platform computes topic-level accuracy vs. time ratios and classifies each topic into one of four cognitive categories." },
+      { "step": 6, "label": "Student Diagnostic Review", "detail": "Students receive a full breakdown: scores, cognitive category per topic, remediation guidance, and question-by-question review with time comparison." },
+      { "step": 7, "label": "Teacher Cohort Analysis", "detail": "Teachers access batch-wide topic accuracy charts, score distributions, leaderboards, Killer Question detection, and CSV exports." },
+      { "step": 8, "label": "Targeted Practice", "detail": "Students use the Personal Mock Engine to generate micro-mocks targeting their diagnosed weak categories." }
+    ]
+  },
+  "userExperience": {
+    "lead": "The platform is designed around four distinct user contexts, each with a focused interface:",
+    "capabilities": [
+      "Student Dashboard: Recent attempts, accuracy gauge, quick access to curriculum tests and personal mocks",
+      "Live Test Interface: Distraction-free exam with countdown timer, question palette with status colors, and review-later flagging",
+      "Post-Test Diagnostics: Cognitive matrix, topic-level guidance, and annotated question-by-question review",
+      "Teacher Console: Question bank management, AI paper ingestion, test authoring, and cohort analytics",
+      "Admin Console: User directory, role assignment, account suspension, and password reset dispatch"
+    ]
+  },
+  "constraintValidation": {
+    "lead": "The diagnostic engine applies precise classification logic per topic:",
+    "evaluations": [
+      "Accuracy < 50% and Time > Ideal Time → Critical Weakness (conceptual gap requiring urgent revision)",
+      "Accuracy < 50% and Time < Ideal Time → Careless / Guessing (impulsive behavior or misreading)",
+      "Accuracy > 80% and Time > Ideal Time → Strong But Slow (conceptual clarity, efficiency gap)",
+      "Accuracy > 80% and Time ≤ Ideal Time → Mastered (ideal performance)"
+    ],
+    "details": "Classification operates at the topic level, not per question, to avoid noise from individual question variance. Each category generates a specific remediation prescription — from targeted revision, to timed drilling, to problem-reading exercises. This transforms the diagnostic report from a performance summary into an actionable study plan."
+  },
+  "additionalModules": [
+    {
+      "title": "AI Question Extraction Pipeline",
+      "description": "Teachers upload test papers as images or PDFs. Google Gemini processes each page using multimodal vision, extracting question text, options, correct answers, inferred subject and topic, difficulty classification, and suggested ideal solving time — all formatted with KaTeX for mathematical notation. Extracted questions go into an interactive review table before ingestion, allowing teachers to verify and edit before committing to the database."
+    },
+    {
+      "title": "Killer Questions Detection Engine",
+      "description": "After each test, the platform automatically identifies questions where the success rate was below 30% or where average time spent exceeded 3x the ideal benchmark. For each such question, the system identifies the Common Misconception Option — the specific wrong distractor chosen most frequently by failing students — giving teachers a precise teaching opportunity for the next class debrief."
+    },
+    {
+      "title": "Personal Mock Engine",
+      "description": "Students generate private practice tests through three modes: (1) Random Topic Distribution — select subjects and question counts by difficulty, auto-generate a mix; (2) Manual Question Selection — browse and hand-pick questions from the bank; (3) AI Test Paper Upload — upload a personal past paper scan to create an instant private mock from it. Personal tests are isolated from the main curriculum test roster."
+    },
+    {
+      "title": "Role-Based Access Control",
+      "description": "InsightPrep uses a strict RBAC model across four roles: Admin (full user management, question bank, analytics), Teacher (question authoring, test creation, cohort analytics), Student (curriculum tests, personal mocks, diagnostics), and Suspended (blocked with informative lock screen). Admins can reassign roles, suspend accounts, and dispatch password reset emails in one click."
+    }
+  ],
+  "engineeringDecisions": [
+    {
+      "title": "Per-Question Time Telemetry",
+      "description": "Recording time per question — not just total test duration — is the foundation of the diagnostic matrix. The telemetry runs invisibly in the background, capturing seconds spent before each option selection or navigation event. This data, combined with accuracy, makes the cognitive classification possible. Total test time alone would only yield a score."
+    },
+    {
+      "title": "Supabase Relational Schema with Row-Level Security",
+      "description": "InsightPrep uses a fully relational PostgreSQL schema (via Supabase) with foreign key integrity across six tables: profiles, tests, questions, question_options, attempts, and attempt_responses. Row-Level Security policies ensure students only see their own attempts and teachers only access tests they created, without application-level filtering."
+    },
+    {
+      "title": "Multimodal AI Question Extraction",
+      "description": "Manually entering 20-50 questions per test from physical papers is the single biggest teacher time sink in coaching institutes. By piping paper scans through Gemini's multimodal vision API and returning KaTeX-formatted structured JSON, the pipeline compresses hours of data entry into seconds with a human review gate before ingestion."
+    },
+    {
+      "title": "KaTeX Mathematical Typesetting",
+      "description": "Physics, chemistry, and mathematics questions require accurate rendering of equations, fractions, chemical formulas, and scientific notation. KaTeX renders mathematical content client-side from LaTeX markup stored in the database, ensuring consistent display across devices without server-side image generation."
+    },
+    {
+      "title": "Topic-Level Aggregation for Diagnostic Stability",
+      "description": "Classifying individual questions into behavioral categories produces noisy results — a single careless mistake on one question does not indicate a guessing pattern. The diagnostic matrix aggregates accuracy and time data at the topic level, requiring a minimum number of questions per topic before classification, making the output prescriptive rather than reactive."
+    }
+  ],
+  "technologies": [
+    { "category": "Frontend Framework", "items": ["React 19", "TypeScript", "Vite"] },
+    { "category": "Styling", "items": ["Tailwind CSS v4", "Lucide React"] },
+    { "category": "Animation", "items": ["Framer Motion"] },
+    { "category": "Backend & Database", "items": ["Supabase", "PostgreSQL", "Row-Level Security"] },
+    { "category": "Artificial Intelligence", "items": ["Google Gemini API (Multimodal Vision)"] },
+    { "category": "Mathematical Typesetting", "items": ["KaTeX / LaTeX"] },
+    { "category": "Data Visualization", "items": ["Recharts"] }
+  ],
+  "outcome": [
+    "InsightPrep is deployed and functional as a full-stack institutional platform with live test delivery, per-question time telemetry, cognitive classification, and cohort analytics operational across all three user roles.",
+    "The AI question extraction pipeline runs in production — institutions can digitize entire past paper archives into structured, searchable question banks without manual data entry.",
+    "The Killer Questions detection engine and cohort analytics dashboards give teachers and academic directors institutional visibility they previously had no structured access to.",
+    "InsightPrep is positioned for adoption by JEE/NEET coaching institutions as a full platform replacement for disconnected quiz tools, spreadsheet-based analysis, and manual post-test workflows."
+  ],
+  "lessonsLearned": {
+    "lead": "Building InsightPrep clarified something that is easy to miss when evaluating edtech products:",
+    "insights": [
+      "The most important thing a test can tell a student is not their score — it is the specific nature of the gap between what they know and what the exam requires.",
+      "Operational software for institutions succeeds when it eliminates the gap between data collection and decision-making, not just when it stores data."
+    ],
+    "corePrinciple": "Diagnostic intelligence is worth more than raw data. The question is not how many marks a student lost — it is why, and what to do about it next."
+  },
+  "summary": "InsightPrep is a full-stack institutional platform that coaching institutes deploy to continuously monitor, diagnose, and act on student cognitive performance. By operating simultaneously as a test delivery engine, a diagnostic reporting system, and an administrative oversight console, InsightPrep gives institutions the intelligence infrastructure to move beyond scores — profiling every student's knowledge gaps by root cause, mapping misconceptions across batches, and surfacing the precise teaching interventions that will improve outcomes at scale."
+}

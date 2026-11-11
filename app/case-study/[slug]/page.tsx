@@ -4,6 +4,8 @@ import { getCaseStudyBySlug, getAllCaseStudies } from '@/lib/case-studies';
 import { CaseStudyHeader } from '@/components/case-study/CaseStudyHeader';
 import { WorkflowDiagram } from '@/components/case-study/WorkflowDiagram';
 import { EngineeringDecisionBlock } from '@/components/case-study/EngineeringDecisionBlock';
+import { PipelineSimulator } from '@/components/interactive/PipelineSimulator';
+import { SamanvaySimulator } from '@/components/interactive/SamanvaySimulator';
 
 export async function generateStaticParams() {
   const caseStudies = getAllCaseStudies();
@@ -99,6 +101,25 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           ))}
         </div>
       </section>
+
+      {/* Interactive Feature Demo Component */}
+      {study.slug === 'samanvay' && (
+        <section className="space-y-4 border-b border-zinc-900 pb-12">
+          <h2 className="text-xs font-mono tracking-widest text-zinc-500 uppercase">
+            Live System Demonstration
+          </h2>
+          <SamanvaySimulator />
+        </section>
+      )}
+
+      {study.slug === 'library-news-digest' && (
+        <section className="space-y-4 border-b border-zinc-900 pb-12">
+          <h2 className="text-xs font-mono tracking-widest text-zinc-500 uppercase">
+            Live Pipeline Demonstration
+          </h2>
+          <PipelineSimulator />
+        </section>
+      )}
 
       {/* 5. Contribution */}
       <section className="space-y-4 border-b border-zinc-900 pb-12">
@@ -216,7 +237,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
               href={study.productionUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 text-xs font-mono font-bold rounded-md transition-colors w-fit"
+              className="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 text-xs font-mono font-bold rounded-md transition-colors w-fit shadow-lg shadow-emerald-500/20"
             >
               Open Live Platform ↗
             </a>

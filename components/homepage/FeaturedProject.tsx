@@ -23,11 +23,11 @@ export function FeaturedProject({ caseStudy }: FeaturedProjectProps) {
           {caseStudy.overview}
         </p>
 
-        {/* Visual Workflow Mockup Diagram Container */}
+        {/* Visual Architecture Diagram Container */}
         <div className="bg-zinc-950 border border-zinc-800/80 rounded-lg p-6 font-mono text-xs text-zinc-400 space-y-4">
           <div className="flex items-center justify-between text-zinc-500 border-b border-zinc-800 pb-3">
             <span>Samanvay Operational Architecture</span>
-            <span className="text-emerald-400 font-sans font-medium bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/40">
+            <span className="text-emerald-400 font-sans font-medium bg-emerald-950/80 px-2.5 py-0.5 rounded border border-emerald-800/50">
               Live at IIM Bodh Gaya
             </span>
           </div>
@@ -35,21 +35,24 @@ export function FeaturedProject({ caseStudy }: FeaturedProjectProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
             <div className="bg-zinc-900/90 border border-zinc-800 p-4 rounded space-y-2">
               <div className="text-zinc-200 font-semibold font-sans">1. Legacy Constraints</div>
-              <div className="text-zinc-500 text-[11px] leading-normal">
+              <div className="text-zinc-400 text-[11px] leading-normal">
                 Optimization solver output → Database records required direct manual SQL editing for schedule modifications.
               </div>
             </div>
 
-            <div className="bg-zinc-900/90 border border-zinc-700 p-4 rounded space-y-2 relative">
-              <div className="text-emerald-400 font-semibold font-sans">2. Samanvay Layer</div>
-              <div className="text-zinc-400 text-[11px] leading-normal">
+            <div className="bg-zinc-900/90 border border-indigo-500/40 p-4 rounded space-y-2">
+              <div className="text-indigo-400 font-semibold font-sans flex items-center justify-between">
+                <span>2. Samanvay Layer</span>
+                <span className="text-[10px] text-indigo-300 bg-indigo-950 px-1.5 py-0.5 rounded">Core</span>
+              </div>
+              <div className="text-zinc-300 text-[11px] leading-normal">
                 Client-side JS snapshot → Drag-and-drop cell manipulation + real-time constraint validation.
               </div>
             </div>
 
             <div className="bg-zinc-900/90 border border-zinc-800 p-4 rounded space-y-2">
               <div className="text-zinc-200 font-semibold font-sans">3. Deferred Sync</div>
-              <div className="text-zinc-500 text-[11px] leading-normal">
+              <div className="text-zinc-400 text-[11px] leading-normal">
                 Exploratory batch changes reviewed locally → Approved updates committed cleanly to production DB.
               </div>
             </div>
@@ -61,7 +64,7 @@ export function FeaturedProject({ caseStudy }: FeaturedProjectProps) {
             href={`/case-study/${caseStudy.slug}`}
             className="inline-flex items-center gap-2 px-6 py-3 bg-zinc-100 text-zinc-950 font-medium text-sm rounded-md hover:bg-white transition-colors"
           >
-            Read Case Study →
+            Read Full Case Study →
           </Link>
         </div>
       </div>

@@ -22,7 +22,7 @@ export function AdditionalProjects({ caseStudies }: AdditionalProjectsProps) {
         {caseStudies.map((project) => (
           <div
             key={project.slug}
-            className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-6 flex flex-col justify-between space-y-6 hover:border-zinc-700 transition-colors"
+            className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-6 h-full flex flex-col justify-between space-y-6 hover:border-zinc-700 transition-colors"
           >
             <div className="space-y-3">
               <h3 className="text-xl font-bold text-zinc-100">{project.title}</h3>
@@ -32,7 +32,7 @@ export function AdditionalProjects({ caseStudies }: AdditionalProjectsProps) {
             <div>
               <Link
                 href={`/case-study/${project.slug}`}
-                className="inline-flex items-center text-xs font-mono text-zinc-300 hover:text-white transition-colors"
+                className="inline-flex items-center gap-1 text-xs font-mono text-zinc-300 hover:text-white transition-colors"
               >
                 Read Case Study →
               </Link>

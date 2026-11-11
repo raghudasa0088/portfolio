@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { CommandKModal } from '@/components/interactive/CommandKModal';
 
 export function Navigation() {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,7 +34,7 @@ export function Navigation() {
           >
             Raghunandan Dasa
           </Link>
-          <div className="flex items-center gap-6 text-xs text-zinc-400 font-mono">
+          <div className="flex items-center gap-4 sm:gap-6 text-xs text-zinc-400 font-mono">
             <a href="#featured-work" className="hover:text-zinc-100 transition-colors">
               Work
             </a>
@@ -43,6 +44,9 @@ export function Navigation() {
             <a href="#about" className="hover:text-zinc-100 transition-colors">
               About
             </a>
+            
+            <CommandKModal />
+
             <a
               href="https://drive.google.com/file/d/13Gl9-0ylAe_27nytQY0e6o_hbcNdDgh8/view?usp=sharing"
               target="_blank"
